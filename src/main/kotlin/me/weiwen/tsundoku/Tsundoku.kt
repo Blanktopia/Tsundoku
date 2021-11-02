@@ -2,6 +2,10 @@ package me.weiwen.tsundoku
 
 import me.weiwen.tsundoku.managers.*
 import org.bukkit.ChatColor
+import org.bukkit.Material
+import org.bukkit.entity.Player
+import org.bukkit.inventory.ItemStack
+import org.bukkit.inventory.meta.BookMeta
 import org.bukkit.plugin.java.JavaPlugin
 
 class Tsundoku: JavaPlugin() {
@@ -32,12 +36,28 @@ class Tsundoku: JavaPlugin() {
                     sender.sendMessage(ChatColor.GOLD.toString() + "Reloaded configuration!")
                     true
                 }
+                "give" -> {
+                    val book = bookManager.books[args.drop(1).joinToString(" ")]
+                    if (sender is Player && book != null) {
+                        val item = ItemStack(Material.WRITTEN_BOOK)
+                        val meta = (item.itemMeta as BookMeta).apply {
+                            title(book.title())
+                            author(book.author())
+                            addPages(*book.pages().toTypedArray())
+                        }
+                        item.itemMeta = meta
+                        sender.inventory.addItem(item)
+                        true
+                    } else {
+                        false
+                    }
+                }
                 else -> false
             }
         }
         command?.setTabCompleter { _, _, _, args ->
             when (args.size) {
-                0 -> listOf("reload")
+                0 -> listOf("reload", "give")
                 else -> listOf()
             }
         }
