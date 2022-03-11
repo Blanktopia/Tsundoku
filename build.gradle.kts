@@ -4,8 +4,8 @@ import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.5.0"
-    kotlin("plugin.serialization") version "1.5.0"
+    kotlin("jvm") version "1.6.0"
+    kotlin("plugin.serialization") version "1.6.0"
     id("net.minecrell.plugin-yml.bukkit")
     id("com.github.johnrengelman.shadow")
 }
@@ -30,7 +30,7 @@ repositories {
 
 
 dependencies {
-    implementation(kotlin("stdlib-jdk8", "1.5.0"))
+    implementation(kotlin("stdlib-jdk8", "1.6.0"))
 
     // Deserialization
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.1")
@@ -73,8 +73,8 @@ bukkit {
 }
 
 tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "1.8"
-    kotlinOptions.languageVersion = "1.5"
+    kotlinOptions.jvmTarget = "17"
+    kotlinOptions.languageVersion = "1.6"
     kotlinOptions.freeCompilerArgs = listOf(
         "-Xopt-in=kotlin.RequiresOptIn",
         "-Xuse-experimental=org.jetbrains.kotlinx.serialization.ExperimentalSerializationApi"
