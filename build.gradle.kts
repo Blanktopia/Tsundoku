@@ -17,7 +17,7 @@ version = "1.0.0"
 repositories {
     mavenCentral()
 
-    maven { url = uri("https://hub.spigotmc.org/nexus/content/repositories/snapshots/") }
+    maven { url = uri("https://repo.papermc.io/repository/maven-public/") }
     maven { url = uri("https://oss.sonatype.org/content/repositories/snapshots/") }
 
     // bStats
@@ -38,7 +38,7 @@ dependencies {
     implementation("com.charleskorn.kaml:kaml:0.104.0")
 
     // Paper
-    compileOnly("com.destroystokyo.paper", "paper-api", "1.16.5-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper", "paper-api", "26.3.build.226-stable")
 
     // bStats
     implementation("org.bstats", "bstats-bukkit", "1.8")
@@ -52,7 +52,7 @@ bukkit {
     name = "Tsundoku"
     version = "1.0.0"
     description = "Easily build custom books for your Minecraft server"
-    apiVersion = "1.16"
+    apiVersion = "26.3"
     author = "Goh Wei Wen <goweiwen@gmail.com>"
     website = "weiwen.me"
 
