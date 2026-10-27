@@ -44,7 +44,7 @@ dependencies {
     implementation("org.bstats", "bstats-bukkit", "1.8")
 
     // MineDown
-    implementation("de.themoep", "minedown-adventure", "1.7.0-SNAPSHOT")
+    implementation("de.themoep", "minedown-adventure", "1.7.6-SNAPSHOT")
 }
 
 bukkit {
